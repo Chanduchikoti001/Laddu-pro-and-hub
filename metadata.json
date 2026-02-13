@@ -1,0 +1,8 @@
+{
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ],
+  "name": "Copy of Laddu Kirana & CSP Pro",
+  "description": "Local-first management system for Kirana stores and digital services."
+}
