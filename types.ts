@@ -30,11 +30,12 @@ export interface Transaction {
   type: ServiceType;
   description: string;
   amount: number;
+  fee?: number;
   category: string;
   customerName?: string;
   customerPhone?: string;
   bankName?: string;
-  paymentMethod: 'Cash' | 'UPI' | 'Bank Transfer';
+  paymentMethod: 'Cash' | 'UPI' | 'Bank Transfer' | 'Credit Card';
   status: 'Paid' | 'Credit' | 'Cancelled';
   note?: string;
 }
@@ -69,9 +70,12 @@ export interface BankingRequest {
   id: string;
   timestamp: number;
   customerName: string;
-  type: 'Transfer' | 'Withdraw' | 'BillPay' | 'Recharge';
+  type: 'Transfer' | 'Withdraw' | 'BillPay' | 'Recharge' | 'AEPS' | 'UPI_QR' | 'CreditCard';
   amount: number;
+  fee: number;
+  netAmount: number;
   targetId?: string; 
+  bankName?: string;
   provider?: string; 
   ifsc?: string;
   status: 'Queued' | 'Approved' | 'Processing' | 'Completed' | 'Failed' | 'Rejected';
