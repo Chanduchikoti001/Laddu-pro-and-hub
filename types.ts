@@ -26,10 +26,11 @@ export interface User {
   profileImage?: string; // base64
   status: 'pending' | 'approved' | 'rejected';
   kycStatus: 'Not Started' | 'Submitted' | 'Verified' | 'Rejected';
-  role: 'Merchant' | 'Customer';
+  role: 'MerchantProPlus' | 'Merchant' | 'Customer';
   createdAt: number;
   wishlistIds?: string[];
-  allowedServices?: ServiceType[]; // NEW: Granular feature control
+  allowedServices?: ServiceType[];
+  registeredBy?: string; // Phone number of the merchant who registered this user
 }
 
 export interface PinnedService {
@@ -54,7 +55,7 @@ export interface Transaction {
   paymentMethod: 'Cash' | 'UPI' | 'Bank Transfer' | 'Credit Card';
   status: 'Paid' | 'Credit' | 'Cancelled';
   note?: string;
-  receiptData?: any; // For print view
+  receiptData?: any; 
 }
 
 export interface DailyTransition {
@@ -102,7 +103,7 @@ export interface BankingRequest {
   amount: number;
   fee: number;
   netAmount: number;
-  targetId?: string; // Consumer ID, Account No, or UPI ID
+  targetId?: string;
   bankName?: string;
   provider?: string; 
   ifsc?: string;
@@ -129,8 +130,8 @@ export interface XeroxTask {
   status: 'Waiting' | 'Approved' | 'Processing' | 'Ready' | 'Delivered' | 'Rejected';
   paymentStatus: 'Paid' | 'Unpaid';
   fileName?: string;
-  externalLink?: string; // Links from Drive/WhatsApp/Email
-  sourcePlatform?: string; // WhatsApp, Email, Upload, CloudLink
+  externalLink?: string; 
+  sourcePlatform?: string; 
 }
 
 export interface KiranaRequirement {
@@ -138,7 +139,7 @@ export interface KiranaRequirement {
   timestamp: number;
   customerName: string;
   customerPhone: string;
-  items: string; // Plain text list or structured
+  items: string; 
   estimatedBudget?: number;
   status: 'Draft' | 'Sent' | 'Fulfilling' | 'Ready' | 'OutForDelivery' | 'Delivered' | 'Cancelled';
   paymentStatus: 'Unpaid' | 'Paid' | 'Credit';
